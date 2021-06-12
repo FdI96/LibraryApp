@@ -1,11 +1,12 @@
 const bookArr = [];
 
-bookObjectMaker = (name, author, pages, read) => {
-  const book = new Object();
-  book.name = name;
-  book.author = author;
-  book.pages = pages;
-  book.read = read;
+const bookObjectMaker = (name, author, pages, read) => {
+  const book = {
+    name,
+    author,
+    pages,
+    read,
+  };
 
   return book;
 };
@@ -17,7 +18,7 @@ function oneBook(book) {
   bigTag.setAttribute('id', book.name + book.author);
   deleteButton.setAttribute('class', 'btn btn-danger');
   deleteButton.innerHTML = 'Delete';
-  deleteButton.addEventListener('click', (event) => {
+  deleteButton.addEventListener('click', () => {
     const listDelete = document.getElementById(book.name + book.author);
     const father = document.getElementById('booklist');
     father.removeChild(listDelete);
@@ -50,8 +51,8 @@ function oneBook(book) {
 
 function showBooksList(book) {
   console.log(book);
-  element = document.getElementById('booklist');
-  tag = oneBook(book);
+  const element = document.getElementById('booklist');
+  const tag = oneBook(book);
   element.appendChild(tag);
 }
 
@@ -59,7 +60,7 @@ const target = document.getElementById('button');
 target.addEventListener('click', (event) => {
   event.preventDefault();
   const valuesArr = [];
-  elementName = document.getElementById('name');
+  const elementName = document.getElementById('name');
   valuesArr.push(elementName.value);
   const elementAuthor = document.getElementById('author');
   valuesArr.push(elementAuthor.value);
@@ -67,7 +68,7 @@ target.addEventListener('click', (event) => {
   valuesArr.push(elementPages.value);
   const elementRead = document.getElementById('read');
   valuesArr.push(elementRead.checked);
-  book = bookObjectMaker(...valuesArr);
+  const book = bookObjectMaker(...valuesArr);
   bookArr.push(book);
   showBooksList(book);
   console.log(bookArr);
