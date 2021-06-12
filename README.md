@@ -18,7 +18,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://jpdf00.github.io/library-app/)
+[Live Demo Link](https://fdi96.github.io/LibraryApp/)
 
 ## Getting Started
 
