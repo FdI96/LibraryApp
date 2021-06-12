@@ -1,15 +1,11 @@
 const bookArr = [];
 
-const bookObjectMaker = (name, author, pages, read) => {
-  const book = {
-    name,
-    author,
-    pages,
-    read,
-  };
-
-  return book;
-};
+function Book(name, author, pages, read) {
+  this.name = name;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+}
 
 function oneBook(book) {
   const bigTag = document.createElement("div");
@@ -55,19 +51,23 @@ function showBooksList(book) {
   element.appendChild(tag);
 }
 
-const target = document.getElementById("button");
-target.addEventListener("click", (event) => {
-  event.preventDefault();
-  const valuesArr = [];
-  const elementName = document.getElementById("name");
-  valuesArr.push(elementName.value);
-  const elementAuthor = document.getElementById("author");
-  valuesArr.push(elementAuthor.value);
-  const elementPages = document.getElementById("pages");
-  valuesArr.push(elementPages.value);
-  const elementRead = document.getElementById("read");
-  valuesArr.push(elementRead.checked);
-  const book = bookObjectMaker(...valuesArr);
-  bookArr.push(book);
-  showBooksList(book);
-});
+function addBookToLibrary() {
+  const target = document.getElementById("button");
+  target.addEventListener("click", (event) => {
+    event.preventDefault();
+    const valuesArr = [];
+    const elementName = document.getElementById("name");
+    valuesArr.push(elementName.value);
+    const elementAuthor = document.getElementById("author");
+    valuesArr.push(elementAuthor.value);
+    const elementPages = document.getElementById("pages");
+    valuesArr.push(elementPages.value);
+    const elementRead = document.getElementById("read");
+    valuesArr.push(elementRead.checked);
+    const book = new Book(...valuesArr);
+    bookArr.push(book);
+    showBooksList(book);
+  });
+}
+
+addBookToLibrary();
