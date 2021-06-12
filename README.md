@@ -2,7 +2,7 @@
 
 # Library App
 
-> Small Library app for recording a collection of books.
+It's a Library app to a store a collection of books.
 
 ![screenshot](./img/app_screenshot.png)
 
